@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import Banner from "./Components/Banner/Banner";
 import CoinTable from "./Components/CoinTable/CoinTable";
-import NavBar from "./Components/NavBar/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import Home from "./pages/Home";
 // import { CurrencyContext } from "./context/CurrencyContext";
 
