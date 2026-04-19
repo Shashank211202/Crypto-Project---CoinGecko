@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchCoinDetails } from "../services/fetchCoinDetails";
 import parse from "html-react-parser";
 import currencyStore from "../state/store";
+import MyLoader from "../Components/Pageloader/Pageloader";
 
 function CoinDetailsPage() {
   const { currency } = currencyStore();
@@ -19,10 +20,13 @@ function CoinDetailsPage() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div><MyLoader /></div>;
   }
   if (isError) {
     return <div>Something went wrong.</div>;
+  }
+  if(isLoading){
+    return <MyLoader />
   }
   return (
     <div className="flex flex-col md:flex-row">

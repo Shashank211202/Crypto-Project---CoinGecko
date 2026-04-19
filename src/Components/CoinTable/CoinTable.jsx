@@ -20,7 +20,7 @@ function CoinTable() {
   }); // updated name
 
   function handleCoinRedirect(id) {
-    navigate(`/details/${id}`);
+    navigate(`/coin/${id}`);
   }
 
   if (isError) {
