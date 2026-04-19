@@ -1,12 +1,14 @@
-import {   useState } from "react";
+import { useState } from "react";
 import { fetchCoinData } from "../../services/fetchCoinData";
 import { useQuery } from "@tanstack/react-query";
 // import { CurrencyContext } from "../../context/CurrencyContext";
 import currencyStore from "../../state/store";
+import { useNavigate } from "react-router-dom";
 
 function CoinTable() {
-  const {currency} = currencyStore();
+  const { currency } = currencyStore();
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
   //Latest version of react-query uses queryKey and queryFn instead of key and fn
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["coins", page, currency],
@@ -14,15 +16,18 @@ function CoinTable() {
     //   retry: 2,
     //   retryDelay: 1000,
     gcTime: 1000 * 60 * 2, // updated name
-    staleTime: 1000 * 60 * 2, // updated name
-  });
+    staleTime: 1000 * 60 * 2,
+  }); // updated name
+
+  function handleCoinRedirect(id) {
+    navigate(`/details/${id}`);
+  }
 
   if (isError) {
     return <div>Error: {error.message}</div>;
   }
   return (
     <div className="my-5 flex flex-col items-center justify-center gap-5 w-[80vw] mx-auto">
-      
       {/* Header of the table*/}
       <div className="w-full bg-yellow-400 text-black flex py-4  px-2 font-semibold items-center justify-center">
         <div className="basis-[35%]">Coin</div>
@@ -36,8 +41,9 @@ function CoinTable() {
           data.map((coin) => {
             return (
               <div
+                onClick={() => handleCoinRedirect(coin.id)}
                 key={coin.id}
-                className="w-full bg-transparent text-white flex py-4 px-2 font-semibold items-center justify-between"
+                className="w-full bg-transparent text-white flex py-4 px-2 font-semibold items-center justify-between cursor-pointer"
               >
                 <div className="flex items-center justify-start gap-3 basis-[35%]">
                   <div className="w-[5rem] h-[5rem]">
