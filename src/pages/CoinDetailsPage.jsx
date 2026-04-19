@@ -4,6 +4,7 @@ function CoinDetailsPage() {
     const { coinId } = useParams(); 
   return (
     <div>
+      
       <h1>Coin Details Page {coinId}
       </h1>
       {/* Coin details content goes here */}
