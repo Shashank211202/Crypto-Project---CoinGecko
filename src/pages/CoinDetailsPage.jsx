@@ -4,15 +4,12 @@ import { fetchCoinDetails } from "../services/fetchCoinDetails";
 import parse from "html-react-parser";
 import currencyStore from "../state/store";
 import MyLoader from "../Components/Pageloader/Pageloader";
+import CoinInfoContainer from "../Components/CoinInfo/CoinInfoContainer";
 
 function CoinDetailsPage() {
   const { currency } = currencyStore();
   const { coinId } = useParams();
-  const {
-    data: coin,
-    isLoading,
-    isError,
-  } = useQuery({
+  const { data: coin, isLoading, isError,} = useQuery({
     queryKey: ["coinDetails", coinId],
     queryFn: () => fetchCoinDetails(coinId),
     gcTime: 1000 * 60 * 2,
@@ -20,13 +17,17 @@ function CoinDetailsPage() {
   });
 
   if (isLoading) {
-    return <div><MyLoader /></div>;
+    return (
+      <div>
+        <MyLoader />
+      </div>
+    );
   }
   if (isError) {
     return <div>Something went wrong.</div>;
   }
-  if(isLoading){
-    return <MyLoader />
+  if (isLoading) {
+    return <MyLoader />;
   }
   return (
     <div className="flex flex-col md:flex-row">
@@ -49,8 +50,8 @@ function CoinDetailsPage() {
           </div>
         </div>
       </div>
-      <div className="md:w-2/3 w-full p-6">
-        Coin Information
+      <div className="md:w-2/3 w-full ">
+        <CoinInfoContainer coinId={coinId}/>
       </div>
     </div>
   );

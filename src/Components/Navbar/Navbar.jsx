@@ -64,8 +64,9 @@ function NavBar() {
             />{" "}
           </svg>
         </button>
-        <button className="btn btn-ghost btn-circle">
-          <div className="indicator">
+        {/* <button className="btn btn-ghost btn-circle"> */}
+          {/* Notification Icon removed */}
+          {/* <div className="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -82,8 +83,8 @@ function NavBar() {
               />{" "}
             </svg>
             <span className="badge badge-xs badge-primary indicator-item"></span>
-          </div>
-        </button>
+          </div> */}
+        {/* </button> */}
       </div>
     </div>
   );
