@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import { CurrencyContext } from "../../context/CurrencyContext";
 import currencyStore from "../../state/store";
+import SearchBar from "../SearchBar/SearchBar";
 function NavBar() {
   const {setCurrency} = currencyStore();
   const navigate = useNavigate();
@@ -47,7 +48,8 @@ function NavBar() {
         <a className="btn btn-ghost text-xl">Crypto Tracker</a>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle">
+        <SearchBar />
+        {/* <button className="btn btn-ghost btn-circle">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -63,7 +65,7 @@ function NavBar() {
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />{" "}
           </svg>
-        </button>
+        </button> */}
         {/* <button className="btn btn-ghost btn-circle"> */}
           {/* Notification Icon removed */}
           {/* <div className="indicator">
